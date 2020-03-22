@@ -1,0 +1,259 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>EasyJobs</title>
+  <!-- <style type="text/css">
+     body{
+       font-family: 'Arial';
+     }
+     .dlg-container{
+       position: absolute;
+       left: 50%;
+       top: 30%;
+       transform: translateX(-50%) translateY(-50%);
+       width: 400px;
+       background: #fff;
+       padding: 10px;
+       border: 2px solid #ddd;
+       box-shadow: 1px 1px 5px 1px #ccc;
+       border-radius: 10px;
+       opacity: 1;
+       transition: all 0.3s linear 0s;
+       z-index: 2;
+     }
+     .dlg-header{
+       padding: 10px;
+       font-weight: bold;
+       background: #575757;
+       color: #f6f7f8;
+     }
+     .dlg-body{
+       padding: 10px;
+       line-height: 30px;
+     }
+     .dlg-footer{
+       text-align: center;
+       background: #f5f5f2;
+       padding: 3px 0;
+     }
+     .dlg-footer a{
+       display: inline-block;
+       width: 100px;
+       padding: 5px 0;
+       border: 1px solid #ccc;
+       border-radius: 10px;
+       background: #eee;
+       cursor: pointer;
+     }
+     .dlg-footer :active{
+       box-shadow: inset 2px 2px 4px 0 #ccc;
+       color: #666;
+     }
+     .freeze-layer{
+       position: fixed;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+       background: rgba(0,0, 0, 0.1);
+       z-index: 1;
+     }
+  
+  </style> -->
+
+
+
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="{% static 'css/custom-bs.css' %}">
+  <link rel="stylesheet" href="{% static 'css/jquery.fancybox.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap-select.min.css' %}">
+  <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+  <link rel="stylesheet" href="{% static 'fonts/line-icons/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body id="top">
+
+
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div> <!-- .site-mobile-menu -->
+
+
+    <!-- NAVBAR -->
+    <header class="site-navbar mt-3">
+      <div class="container-fluid">
+        <div class="row align-items-center">
+          <!--<div class="site-logo col-8"><a href="/candidate/home">EasyJobs</a></div>-->
+
+          <nav class="mx-auto site-navigation">
+             
+              <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-1">
+                <li><a href="#" class="nav-link active"><b style="color: darkblue;">Home</b></a></li>
+                <li><a href="/company/com_about"><b style="color: darkblue;">About Us</b></a></li>
+                <li><a href="/company/com_jobs/{{user.username}}"><b style="color: darkblue;"> Jobs</b></a></li>
+              <!-- <li><a href="services.html">Applications</a></li>-->
+               <!-- <li><a href="/company/com_contact"><b style="color: darkblue;">Contact Us</b></a></li>-->
+              
+                
+                <!--about.html?about us-->
+               <li><a href="/company/com_noti/{{user.username}}"><b style="color: darkblue;">Notifications</b></a></li>
+                <li><a href="/company/com_viewprofile/{{user.username}}"><b style="color: darkblue;">Profile</b></a></li>
+              
+              
+              <!--<li class="d-lg-none"><a href="contact.html">Contact Us</a></li>-->
+            </ul>
+          </nav>
+          <div class="right-cta-menu text-right d-flex aligin-items-center col-6">
+              <div class="ml-auto">
+                <a href="/" class="btn btn-primary border-width-2 d-none d-lg-inline-block">Sign out</a>
+              </div>
+              <a href="#" class="site-menu-toggle js-menu-toggle d-inline-block d-xl-none mt-lg-2 ml-3"><span class="icon-menu h3 m-0 p-0 mt-2"></span></a>
+            </div>
+          
+      </div>
+      <br>
+      <br>
+    </header>
+
+    <!-- HOME -->
+                      
+                    <form method="POST" name = "com_letter" action="/company/com_jobcall_allnoti/" >
+                        {% csrf_token %}
+                        <br>
+                        <br>
+                       
+                       
+                     
+                      
+                    {% for n in messages %}
+                    <center>
+                    <input type="hidden" name="canuname" value="{{n.message}}">
+                    
+                    {% endfor %}
+                    
+                    
+                    <!--Post Name:
+                    <select name="job">
+                        {% for n in job %}
+                      <option value="{{n.job_name}}">{{n.job_name}}</option>
+                      {% endfor %}
+                    </select>-->
+                   {% for e in jobcall %}
+                    
+                    <input type="hidden" value="{{e.job_id}}" name="jid"><br>
+                    <input type="hidden" value="{{user.username}}" name="comuname"><br>
+                   {% endfor %}
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   <b> Description :</b><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                   
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    
+                    <textarea rows ="10" cols ="40" name="in_desc"></textarea>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <br>
+                    
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  </center>
+                 </div>
+                 <center>
+                 <div class="col-12 col-sm-6 col-md-6 col-lg-4 mb-4 mb-lg-0">
+                 <input type="submit" value="Send " class="btn btn-primary btn-lg btn-block text-white btn-search">
+                 </div></center>
+                 <!-- <div id="freezeLayer" class="freeze-layer" ></div>
+                 <button onclick="CustomConfirm.show('Are?',con);" class="btn btn-primary btn-lg btn-block text-white btn-search">Send Notification To All</button>
+
+                 <div id="dialogCont" class="dlg-container">
+                     <div class="dlg-header">Cofirmation</div>
+                     <div id="dlgbody" class="dlg-body">Are you Sure?</div>
+                     <div class="dlg-footer">
+                       <a onclick="window.location.href='/company/com_jobcall_all'">OK</a>
+                       <a onclick="">Cancel</a>
+                     </div>
+                   </div>
+                   <script type="text/javascript">
+                      function con(){}
+
+                      var CustomConfirm = new function(){
+                        this.show = function(msg, callback){
+                          var dlg = document.getElementById('dialogCont');
+                          var dlgbody = dlg.querySelector('#dlgbody');
+                          dlg.style.top = '30%'
+                          dlg.style.opacity=1;
+                          dlgbody.textContent =msg;
+                          this.callback=callback;
+                          document.getElementById('freezeLayer').style.display = '';
+                        }
+                      };
+                      
+                  </script> 
+                   
+                   
+                   <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#MyModal">Open Modal</button>
+                     <div id="MyModal" class="modal fade" role="dialog">
+                      <div class="modal-dialog">
+                       <div class="modal-content">
+                         <div class="modal-header">Modal Header</div>
+                         <div class="modal-body">Modal Header</div>
+                         <div class="modal-footer">Modal Header</div>
+
+                        </div>
+                      </div>
+
+
+                     </div> -->
+                   
+                    
+
+                    </form>
+                    
+                    </div>
+                    </div>
+                    </div>
+                   
+</body>
+
+</html>
