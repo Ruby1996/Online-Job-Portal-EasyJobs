@@ -37,6 +37,8 @@ class can_pro(models.Model):
     pg_yop = models.IntegerField(null=True , blank=True)
     pg_percent = models.FloatField(null=True , blank=True)
     skills = models.CharField(max_length=500)
+    resume = models.FileField(upload_to='media/')
+    status = models.IntegerField()
 
     def __str__(self):
         return self.can_name

@@ -28,21 +28,52 @@ def contact(request):
     
 def login(request):
     if request.method == 'POST':
-         username = request.POST['email']
-         password = request.POST['pswd']
-         user = auth.authenticate(username=username, password=password)
-         if user is not None:
-             auth.login(request, user)
-             
-             if User.objects.filter(last_name="company", username=username).exists():
-                   
-             #if auth.authenticate(last_name='company'):    
-                   return redirect('com_home') 
-             else:
-                   return redirect('can_home')
-         else:
-             messages.info(request, 'invalid username/password')
-             return redirect('login')
+        username = request.POST['email']
+        password = request.POST['pswd']
+        if can_pro.objects.filter(can_uname = username).exists():
+            can = can_pro.objects.get(can_uname = username)
+            if can.status == 1:
+                user = auth.authenticate(username=username, password=password)
+                if user is not None:
+                    auth.login(request, user)
+                    
+                    if User.objects.filter(last_name="company", username=username).exists():
+                        
+                    #if auth.authenticate(last_name='company'):    
+                        return redirect('com_home') 
+                    else:
+                        return redirect('can_home')
+                else:
+                    messages.info(request, 'Invalid username/password')
+                    return redirect('login')
+            else:
+                messages.info(request, 'Please Register')
+                return redirect('login')       
+
+        elif com_pro.objects.filter(com_username = username).exists():
+
+            com = com_pro.objects.get(com_username = username)
+            if com.status == 1:
+                user = auth.authenticate(username=username, password=password)
+                if user is not None:
+                    auth.login(request, user)
+                    
+                    if User.objects.filter(last_name="company", username=username).exists():
+                        
+                    #if auth.authenticate(last_name='company'):    
+                        return redirect('com_home') 
+                    else:
+                        return redirect('can_home')
+                else:
+                    messages.info(request, 'Invalid username/password')
+                    return redirect('login')
+            else:
+                messages.info(request, 'Please Register')
+                return redirect('login')  
+
+        else:
+            return render(request, 'login.html')
+
     else:
          return render(request, 'login.html')
        
@@ -70,7 +101,7 @@ def signup(request):
                    can = can_pro(can_uname=username, can_name=name, can_house="", can_place="", can_pincode=0,
                    can_gender="", can_email=email, can_mob=0, can_dt="", can_state="", school ="", sc_board="",
                    sc_percent=0.0, sc_yop=0.0, hss="", hss_board="", hss_stream="", hss_yop=0, hss_percent=0,ug="",ug_uni="",
-                   ug_course="", ug_yop=0, ug_percent=0.0, pg="", pg_uni="", pg_course="", pg_yop=0, pg_percent=0)
+                   ug_course="", ug_yop=0, ug_percent=0.0, pg="", pg_uni="", pg_course="", pg_yop=0, pg_percent=0,skills="",status=1)
                    can.save()
                    print('user created')
                    messages.info(request, 'Successfully Registered')
@@ -105,7 +136,7 @@ def com_signup(request):
                  else:
                    user = User.objects.create_user(username=username, password=password1, email=email, first_name=first_name, last_name="company")
                    user.save()
-                   com = com_pro(com_username=username, com_name =first_name, com_desc=desc, com_place=place, com_pincode=pincode, com_dt=dt, com_state=state, com_country = country, com_mob =mob, com_email =email)
+                   com = com_pro(com_username=username, com_name =first_name, com_desc=desc, com_place=place, com_pincode=pincode, com_dt=dt, com_state=state, com_country = country, com_mob =mob, com_email =email,status=1)
                    com.save()
                    
                    print('user created')

@@ -17,6 +17,7 @@ class com_pro(models.Model):
     com_country =models.CharField(max_length=50)
     com_mob =models.IntegerField()
     com_email =models.CharField(max_length=250)
+    status = models.IntegerField()
     class meta:
         db_table = "com_pro"
 

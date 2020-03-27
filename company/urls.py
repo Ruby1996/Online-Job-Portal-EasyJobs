@@ -12,7 +12,7 @@ urlpatterns = [
     path('com_can/<str:uname>/<int:id>/<str:comuname>', views.com_can, name='com_can'),
     # path('com_interview/<str:canuname>/<str:comuname>/<int:jobid>', views.com_interview, name='com_interview'),
     path('com_interviewnoti/<str:canuname>/<str:comuname>/<int:jobid>', views.com_interviewnoti, name='com_interviewnoti'),
-
+    path('com_cannoti/<str:uname>/<int:id>',views.com_cannoti,name='com_cannoti'),
     path('com_callletter/<str:uname>/<str:comuname>/<str:comname>', views.com_callletter, name='com_callletter'),
     path('com_editprofile/<str:uname>', views.com_editprofile, name='com_editprofile'),
     path('can_prof/<str:canuname>',views.can_prof,name='can_prof'),
@@ -20,6 +20,11 @@ urlpatterns = [
     path('change_password/', views.change_password, name='change_password'),
     path('com_saveprofile/<str:uname>', views.com_saveprofile, name='com_saveprofile'),
     path('com_viewprofile/<str:uname>', views.com_viewprofile, name='com_viewprofile'),
+
+    path('com_dlt_ac',views.com_dlt_ac,name='com_dlt_ac'),
+
+    path('com_delete/<str:uname>',views.com_delete,name='com_delete'),
+
     #path('viewprofile/', views.viewprofile, name='viewprofile'),
     path('noti_report/<str:uname>/<int:id>',views.noti_report,name='noti_report'),
     path('com_viewnoti/<str:uname>/<int:id>',views.com_viewnoti,name='com_viewnoti'),
