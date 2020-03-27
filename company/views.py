@@ -12,8 +12,8 @@ from datetime import date
 # Create your views here.
 
 def home(request):
-    cancount = can_pro.objects.all().count()
-    comcount = com_pro.objects.all().count()
+    cancount = can_pro.objects.filter(status=1).count()
+    comcount = com_pro.objects.filter(status=1).count()
     jobcount = Jobpost.objects.all().count()
     return render(request, 'com_home.html',{'cancount':cancount,'comcount':comcount,'jobcount':jobcount})
 
@@ -74,7 +74,7 @@ def noti_report(request,uname,id):
 
 def com_editprofile(request, uname):
 
-    compro = com_pro.objects.filter(com_username = uname)
+    compro = com_pro.objects.filter(com_username = uname,status=1)
     return render(request, 'com_editprofile.html', {'compro':compro}) 
 
 
@@ -180,7 +180,7 @@ def can_prof(request,canuname):
 
 def com_viewprofile(request, uname):
 
-    compro = com_pro.objects.filter(com_username = uname)
+    compro = com_pro.objects.filter(com_username = uname,status=1)
     return render(request, 'com_viewprofile.html', {'compro':compro}) 
 
 
@@ -195,7 +195,7 @@ def com_saveprofile(request, uname):
         con = request.POST['con']
         mob = request.POST['mob']
         email = request.POST['email']
-        compro = com_pro.objects.get(com_username = uname)
+        compro = com_pro.objects.get(com_username = uname,status=1)
         us = User.objects.get(username = uname)  
         us.first_name = name
         us.save()
@@ -232,7 +232,7 @@ def com_jobcall_allnoti(request):
         indesc = request.POST['in_desc']
         
         japp = Jobapply.objects.filter(job_id=jobid,com_uname=comuname,short="yes",status=1)
-        com = com_pro.objects.get(com_username=comuname)
+        com = com_pro.objects.get(com_username=comuname,status=1)
         job = Jobpost.objects.get(id=jobid)
         jobname = job.job_name
         comname = com.com_name
@@ -296,11 +296,15 @@ def com_jobcallnoti(request):
         #     jap.save()
         #intv = interview(com_username =comuname, job_name = jobname, in_desc =indesc, com_name = comname, can_uname =canuname)
         #intv.save()
-        return redirect('com_app',jobid)
+        return redirect('com_app',jobid,comuname)
    else:
         return render(request, 'com_home.html')           
 
-        
+
+def com_cannoti(request,uname,id):
+    n = notification.objects.filter(job_id=id,can_uname=uname)
+    jname = Jobpost.objects.get(id=id)
+    return render(request,'com_cannoti.html',{'n':n,'jname':jname})        
 
 
 def com_jobcall(request):
@@ -429,6 +433,30 @@ def change_password(request):
 
     else:
         return render(request,'can_pswd.html')
+
+
+def com_dlt_ac(request):
+    return render(request,'com_dlt_ac.html')    
+
+
+def com_delete(request,uname):
+    com = com_pro.objects.get(com_username=uname)
+    if request.method == 'POST':
+        pass1 = request.POST['pswd']
+        user = auth.authenticate(username = uname, password = pass1)
+        if user is not None:
+            
+            com.status=0
+            com.save()
+            auth.logout(request)
+            return redirect('/')
+            # return render(request,'home.html')
+        else:
+            messages.info(request,'Invalid Password')
+            return redirect('com_dlt_ac')     
+    else:
+        return redirect('com_dlt_ac')     
+
 
         
 
