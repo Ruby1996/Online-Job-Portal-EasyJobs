@@ -1,0 +1,27 @@
+<!-- templates/home.html -->
+<html>
+
+<title>EasyJobs</title>
+<br><br><br><br><br><br><br><br><br>
+
+<center><h2>Make Payment for the Successfull Application & Get You Dream Job</h2>
+    <form action="{% url 'charge' %}" method="POST">
+        {% csrf_token %}
+       <input type="hidden" name="job" value="{{jobname}}">
+       <!-- <input type="hidden" name="comname1" value="{{comname}}"> -->
+       <input type="hidden" name="comuname1" value="{{comuname}}">
+       <input type="hidden" name="uname1" value="{{uname}}">
+       <input type="hidden" name="id1" value="{{id}}">
+       <input type="hidden" name="canfname1" value="{{canfname}}">
+       <input type="hidden" name="canlname1" value="{{canlname}}">
+       <!-- <input type="text" name="amt" value="{{amount}}"> -->
+<!-- 
+<script src="https://checkout.stripe.com/checkout.js" class="stripe-button" -->
+    
+<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="{{ key }}"
+    data-description="Get Your Dream Job"
+    data-amount="{{ amount }}"
+    data-locale="auto">
+</script></center>
+<!-- </form> --></html>

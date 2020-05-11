@@ -1,0 +1,217 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>EasyJobs</title>
+  <style>
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color:darkgreen;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="{% static 'css/custom-bs.css' %}">
+  <link rel="stylesheet" href="{% static 'css/jquery.fancybox.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap-select.min.css' %}">
+  <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+  <link rel="stylesheet" href="{% static 'fonts/line-icons/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body id="top">
+
+
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div> <!-- .site-mobile-menu -->
+
+
+    <!-- NAVBAR -->
+    <header class="site-navbar mt-3">
+      <div class="container-fluid">
+        <div class="row align-items-center">
+          <!-- <div class="site-logo col-8"><a href="/company/home">EasyJobs</a></div> -->
+
+          <nav class="mx-auto site-navigation">
+            <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-1">
+              <li><a href="/company/com_accept_applications/{{jname.id}}/{{user.username}}">Back</a></li>
+              <li><a href="#" ></a></li>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+             
+             
+            <!-- <li><a href="services.html">Applications</a></li>-->
+               <!--<li><a href="/company/com_contact">Contact Us</a></li>-->
+              
+              <!--about.html?about us-->
+              
+              <li><a href="#"></a></li>
+              
+              <!--<li class="d-lg-none"><a href="contact.html">Contact Us</a></li>-->
+            </ul>
+          </nav>
+          <div class="right-cta-menu text-right d-flex aligin-items-center col-6">
+              <div class="ml-auto">
+                <a href="/" class="btn btn-primary border-width-2 d-none d-lg-inline-block">Sign out</a>
+              </div>
+              <a href="#" class="site-menu-toggle js-menu-toggle d-inline-block d-xl-none mt-lg-2 ml-3"><span class="icon-menu h3 m-0 p-0 mt-2"></span></a>
+            </div>
+          
+          
+      </div>
+    </header>
+
+    <!-- HOME -->
+  
+    
+
+
+
+
+
+    
+
+      
+ 
+    
+    <footer class="site-footer">
+
+      
+      <div class="container">
+        <div class="row mb-5">
+         
+          <div class="col-6 col-md-3 mb-4 mb-md-12">
+       
+            <h2 style="color: darkgrey;">{{jname}}</h2>
+            <h3>Posted on: {{jname.post_date}}</h3>
+            
+            
+            <ul class="list-unstyled">
+              <!-- <li>Count of shortlist: {{c}}</li>
+              <li>Count of applications: {{capp}}</li>
+              <li>Count of rejected applications: {{rjt}}</li> -->
+              <li>Count of selected candidates: {{slt}}</li>
+            </ul>
+            </div></div></div>
+            <table border="0" width="300" height="100" style="float: left;border-right: hidden;">
+              <th style="color:white">  Candidate<br></th>
+                
+              
+              {% for e in can %}
+              <tr>
+                <td style="padding: 20px;">
+                  {{e}}
+                </td>
+              </tr>
+            {% endfor %}
+            </table>
+              <table border="0" width="900" height="100" style="float: left;">
+                <th style="color:white">Id&nbsp;&nbsp;&nbsp;&nbsp;</th><th style="color:white">Applied Date</th><th style="color:white">Shortlist Status</th>
+              {% for e in j %}
+             
+                <tr>
+                  <td>{{e.id}}</td>
+                  <td>{{e.apply_date}}</td>
+                  <td>{{e.short}}</td>
+                  <!-- <td><a href="/company/can_prof/{{e.can_uname}}"><b style="color: darkgrey;">{{e.canname}}</b></a></td> -->
+                  <td style="padding: 10px;">
+                    
+                    <!-- <button class="rejectbtn" onclick="conf('are you?','{{e.can_uname}}');">Reject</button></td> -->
+                    <button class="dropbtn" onclick="window.location.href='/company/can_prof/{{e.can_uname}}'">Profile</button></td>
+                
+                  
+                </tr>
+              
+              
+              {% endfor %}
+            </table>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+     </div>
+     
+    </footer>
+
+ 
+  <!-- SCRIPTS -->
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'js/stickyfill.min.js' %}"></script>
+  <script src="{% static 'js/jquery.fancybox.min.js' %}"></script>
+  <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+
+  <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
+  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+
+  <!-- <script src="js/bootstrap-select.min.js"></script> -->
+
+  <script src="{% static 'js/custom.js' %}"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+<!-- templates/home.html -->
+<br><br><br><br><br><br><br><br><br>
+
+<center><h2>Make Payment for the Successfull Registration</h2>
+    <form action="{% url 'com_charge' %}" method="POST">
+        {% csrf_token %}
+    
+
+<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="{{ key }}"
+    data-description="Make Your Payment"
+    data-amount="{{ amount }}"
+    data-locale="auto">
+</script></center>
+</form>

@@ -1,0 +1,247 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>EasyJobs</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="{% static 'css/custom-bs.css' %}">
+  <link rel="stylesheet" href="{% static 'css/jquery.fancybox.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap-select.min.css' %}">
+  <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+  <link rel="stylesheet" href="{% static 'fonts/line-icons/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body id="top">
+
+
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div> <!-- .site-mobile-menu -->
+
+
+    <!-- NAVBAR -->
+    <header class="site-navbar mt-3">
+      <div class="container-fluid">
+        <div class="row align-items-center">
+          <div class="site-logo col-8"><a href="/company/home">&nbsp;&nbsp;&nbsp;EasyJobs</a></div>
+
+          <nav class="mx-auto site-navigation">
+            <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-1">
+              <li><a href="/company/home" >Home</a></li>
+              <li><a href="#" class="active">About Us</a></li>
+              <li><a href="/company/com_jobs/{{user.username}}">Jobs</a></li>
+            <!-- <li><a href="services.html">Applications</a></li>-->
+              <!--<li><a href="/company/com_contact">Contact Us</a></li>-->
+              
+              <!--about.html?about us-->
+              <li><a href="/company/com_noti/{{user.username}}">Notifications</a></li>
+              <li><a href="/company/com_viewprofile/{{user.username}}"> Profile</a></li>
+              <li><a href="/company/com_help">Help</a></li>
+              
+              <!--<li class="d-lg-none"><a href="contact.html">Contact Us</a></li>-->
+            </ul>
+          </nav>
+          <div class="right-cta-menu text-right d-flex aligin-items-center col-6">
+              <div class="ml-auto">
+                <a href="/" class="btn btn-primary border-width-2 d-none d-lg-inline-block">Sign out</a>
+              </div>
+              <a href="#" class="site-menu-toggle js-menu-toggle d-inline-block d-xl-none mt-lg-2 ml-3"><span class="icon-menu h3 m-0 p-0 mt-2"></span></a>
+            </div>
+          
+          
+      </div>
+      <br><br>
+      <h5 style="color:cyan">Welcome!!! {{user.first_name}}</h5>
+    </header>
+
+    <!-- HOME -->
+    <section class="home-section section-hero inner-page overlay bg-image"
+      style="background-image: url('/static/images/job22.jpg');" id="home-section">
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-12">
+            <div class="mb-5 text-center">
+              <div class="container">
+                <div class="row mb-5 justify-content-center">
+                  <div class="col-md-7 text-center">
+                    <h2 class="section-title mb-2 text-white">Career Statistics</h2>
+                  <div class="row pb-0 block__19738 section-counter">
+                   
+                    <div class="col-6 col-md-6 col-lg-4 mb-5 mb-lg-0">
+                      <div class="d-flex align-items-center justify-content-center mb-2">
+                        <strong class="number" data-number={{cancount}}>0</strong>
+                      </div>
+                      <span class="caption">Candidates</span>
+                    </div>
+        
+                    <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
+                      <div class="d-flex align-items-center justify-content-center mb-2">
+                        <strong class="number" data-number="{{comcount}}">0</strong>
+                      </div>
+                      <span class="caption">Companies</span>
+                    </div>
+          
+                    <div class="col-6 col-md-6 col-lg-4 mb-5 mb-lg-0">
+                      <div class="d-flex align-items-center justify-content-center mb-2">
+                        <strong class="number" data-number="{{jobcount}}">0</strong>
+                      </div>
+                      <span class="caption">Jobs Posted</span>
+                    </div>
+                    
+                    <div class="col-6 col-md-6 col-lg-4 mb-5 mb-lg-0">
+                      <div class="d-flex align-items-center justify-content-center mb-2">
+                        <strong class="number" data-number="{{slt}}">0</strong>
+                      </div>
+                      <span class="caption">Selected Candidates</span>
+                    </div>
+                    <div class="col-6 col-md-6 col-lg-4 mb-5 mb-lg-0">
+                      <div class="d-flex align-items-center justify-content-center mb-2">
+                        <strong class="number" data-number="{{app}}">0</strong>
+                      </div>
+                      <span class="caption">Applications</span>
+                    </div>
+                    <div class="col-6 col-md-6 col-lg-4 mb-4 mb-lg-0">
+                      <div class="d-flex align-items-center justify-content-center mb-2">
+                        <strong class="number" data-number="{{shrt}}">0</strong>
+                      </div>
+                      <span class="caption">Shortlist Status</span>
+                    </div>
+              <!-- <h1 class="text-white font-weight-bold">About Us</h1>
+              <p>Post your jobs in our powerful career website...</p> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+
+
+
+    
+    
+    <section class="site-section pb-0">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <!--<a data-fancybox data-ratio="2" href="https://vimeo.com/317571768" class="block__96788">
+              <span class="play-icon"><span class="icon-play"></span></span>-->
+              <img src="/static/images/job_group.jpg" alt="Image" class="img-fluid img-shadow">
+            </a>
+          </div>
+          <div class="col-lg-5 ml-auto">
+            <h2 class="section-title mb-3">Post jobs and find candidates</h2>
+            <p class="lead">We have experienced staff available to provide you with the help you need to find candidates and post a jobs.
+
+              The services we provide will also support what you need to do to meet your obligations to job post
+              </p>
+           
+          </div>
+        </div>
+      </div>
+    </section>
+   
+    <section class="py-5 bg-image overlay-primary fixed overlay" id="next-section"
+      style="background-image: url('/static/images/hero_1.jpg');">
+      <div class="container">
+        <div class="row mb-5 justify-content-center">
+          <div class="col-md-7 text-center">
+            <h2 class="section-title mb-2 text-white">JobBoard Site Stats</h2>
+            <p class="lead text-white">We have experienced staff available to provide you with the help you need to find candidates and post jobs.
+
+                The services we provide will also support what you need to do to meet your obligations to job post.
+                </p>
+          </div>
+        </div>
+    
+    
+    
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+
+      
+        <div class="container">
+          <div class="row mb-5">
+            <div class="col-6 col-md-3 mb-4 mb-md-0">
+              <!--<h3>Search Trending</h3>
+              <ul class="list-unstyled">
+                <li><a href="#">Web Design</a></li>
+                <li><a href="#">Graphic Design</a></li>
+                <li><a href="#">Web Developers</a></li>
+                <li><a href="#">Python</a></li>
+                <li><a href="#">HTML5</a></li>
+                <li><a href="#">CSS3</a></li>
+              </ul>-->
+            </div>
+            <div class="col-6 col-md-3 mb-4 mb-md-0">
+              <h3>Company</h3>
+              <ul class="list-unstyled">
+                <li><a href="#">About Us</a></li>
+                <!--<li><a href="can_jobs.html">Jobs</a></li>-->
+                <!--<li><a href="#">Blog</a></li>
+                <li><a href="#">Resources</a></li>-->
+              </ul>
+            </div>
+           <!-- <div class="col-6 col-md-3 mb-4 mb-md-0">
+              <h3><a href ="/company/com_contact"> Contact Us</a></h3>
+          </div>-->
+            <div class="col-6 col-md-3 mb-4 mb-md-0">
+              <!--<h3>Support</h3>
+              <ul class="list-unstyled">
+                <li><a href="#">Support</a></li>
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+              </ul>-->
+            </div>
+            <!--<div class="col-6 col-md-3 mb-4 mb-md-0">
+              <h3>Contact Us</h3>
+              <div class="footer-social">
+                <a href="#"><span class="icon-facebook"></span></a>
+                <a href="#"><span class="icon-twitter"></span></a>
+                <a href="#"><span class="icon-instagram"></span></a>
+                <a href="#"><span class="icon-linkedin"></span></a>
+              </div>-->
+            </div>
+          </div>
+  
+          <div class="row text-center">
+            <div class="col-12">
+              
+            </div>
+          </div>
+        </div>
+      </footer>
+    
+    </div>
+  <!-- SCRIPTS -->
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'js/stickyfill.min.js' %}"></script>
+  <script src="{% static 'js/jquery.fancybox.min.js' %}"></script>
+  <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+
+  <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
+  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+
+  <script src="{% static 'js/custom.js' %}"></script>
+
+
+</body>
+
+</html>

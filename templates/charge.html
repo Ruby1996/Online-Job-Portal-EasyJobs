@@ -1,0 +1,35 @@
+<!-- templates/home.html -->
+<!-- <br><br><br><br><br><br><br><br><br>
+
+<center><h2>Pay $5.00 for the Successfull Application & Get You Dream Job</h2>
+    <form action="{% url 'charge' %}" method="post">
+        {% csrf_token %}
+       
+<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="{{ key }}"
+    data-description="Get Your Dream Job"
+    data-amount="500"
+    data-locale="auto">
+</script></center>
+</form> -->
+<head>
+    <style>
+        .btncolor {
+      background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+}
+    </style>
+</head>
+<h2 style="color: darkgreen;">Thank You..., you paid Successfully</h2><br><br>
+<br><br>
+<br><br><br><br><br>
+<center>
+    <h2 style="color: darkgreen;">Your Application has Successfully Submitted</h2><br>
+    <button class="btncolor" onclick="window.location.href='/payment/home'">Go To Home</button>
+</center>

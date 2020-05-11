@@ -1,0 +1,219 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>EasyJobs</title>
+  <style>
+   table {
+  border-collapse: collapse;
+  /* width: 100%; */
+}
+
+th{
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+td {
+  padding: 10px;
+  height: 200px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {background-color:rgb(15, 12, 15);}
+
+.rmbtn {
+  background-color:rgb(133, 6, 6);
+  padding: 20px;
+  width: 100px;
+  height:50px;
+  font-weight: bolder;
+  
+  border-color: darkred;
+} /* Red */
+.rplybtn {
+  background-color:rgb(3, 119, 3); 
+  padding: 15px;
+  width: 100px;
+  height:30px;
+  font-weight: bolder;
+  border-color: darkgreen;
+  color: black;
+  } /* Gray */
+
+
+  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="{% static 'css/custom-bs.css' %}">
+  <link rel="stylesheet" href="{% static 'css/jquery.fancybox.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap-select.min.css' %}">
+  <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+  <link rel="stylesheet" href="{% static 'fonts/line-icons/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body id="top">
+
+
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div> <!-- .site-mobile-menu -->
+
+
+    <!-- NAVBAR -->
+    <header class="site-navbar mt-3">
+      <div class="container-fluid">
+        <div class="row align-items-center">
+          <!-- <div class="site-logo col-8"><a href="/company/home">EasyJobs</a></div> -->
+
+          <nav class="mx-auto site-navigation">
+            <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-1">
+              <li><a href="/administrator/home">Back</a></li>
+              <li><a href="#" ></a></li>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+             
+             
+            <!-- <li><a href="services.html">Applications</a></li>-->
+               <!--<li><a href="/company/com_contact">Contact Us</a></li>-->
+              
+              <!--about.html?about us-->
+              
+              <li><a href="#"></a></li>
+              
+              <!--<li class="d-lg-none"><a href="contact.html">Contact Us</a></li>-->
+            </ul>
+          </nav>
+          <div class="right-cta-menu text-right d-flex aligin-items-center col-6">
+              <div class="ml-auto">
+                <a href="/" class="btn btn-primary border-width-2 d-none d-lg-inline-block">Sign out</a>
+              </div>
+              <a href="#" class="site-menu-toggle js-menu-toggle d-inline-block d-xl-none mt-lg-2 ml-3"><span class="icon-menu h3 m-0 p-0 mt-2"></span></a>
+            </div>
+          
+          
+      </div>
+    </header>
+
+    <!-- HOME -->
+  
+    
+
+
+
+
+
+
+    
+    <footer class="site-footer">
+      <br><br><br>
+      <center>
+        {% for message in messages %}
+        <h3 style="color:beige;font-size: 25px;"><b>{{message}}...</b></h3>
+        {% endfor %}</center>
+      <br><br>
+      <div class="container">
+        <div class="row mb-5">
+          
+  
+          <div class="col-12 col-md-12 mb-4 mb-md-12">
+         
+       
+                     <form name="dltac" method="POST" >
+                       {% csrf_token %}
+                       <table border="0" width="200" height="100" style="float: left;">
+                        <th style="color: cornsilk;">User</th>
+                        {% for e in user %}
+                        <tr>
+                          <td>{{e}}</td>
+                          
+                        </tr>
+                        {% endfor %}
+
+                       
+                      </table>
+                      <table border="0" width="900" height="100" style="float: left;">
+                        <th style="color: cornsilk;">Send Date</th><th style="color: cornsilk;">Message</th><th></th>
+                       <th></th>
+                        {% for e in hlp %}
+                         <tr>
+                           <td>{{e.help_date}}</td>
+                           <td>{{e.message}}</td>
+                           <td>
+                             <button class="rmbtn" onclick="c('Are you sure you want to remove notification ?','{{e.id}}');"><b style="color: azure;">Remove</b></button>
+                           
+                             <script>
+                              function c(msg,id){
+                      
+                                        var co = confirm("Are you sure you want to remove notification ?")
+                                        if(co)
+                                        {
+                                          window.location="/administrator/reject_help/" + id
+
+                                        }
+                                      }
+                            </script>
+                            </td>
+                           <td>
+                            <!-- <button class="rplybtn" onclick="window.location.href='/administrator/reply_help'"><b style="color: azure;">Reply</b></button> -->
+                            <a href='/administrator/reply_help/{{e.id}}' class="rplybtn"><b style="color: azure;"> Reply</b></a>                         
+                          </td>
+                         </tr>
+                         {% endfor %}
+
+                        
+                       </table>
+                 
+           
+            </form>
+            <br><br><br>
+          <br>
+          <br>
+          <br>
+          <br>
+     </div>
+     
+    </footer>
+
+ 
+  <!-- SCRIPTS -->
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'js/stickyfill.min.js' %}"></script>
+  <script src="{% static 'js/jquery.fancybox.min.js' %}"></script>
+  <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+
+  <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
+  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+
+  <!-- <script src="js/bootstrap-select.min.js"></script> -->
+
+  <script src="{% static 'js/custom.js' %}"></script>
+
+
+</body>
+
+</html>

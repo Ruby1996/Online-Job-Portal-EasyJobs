@@ -1,0 +1,60 @@
+[33mcommit 07e394b548a1c036f276e98bacabdf5525a452a8[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: unknown <rubycpoovelil7@gmail.com>
+Date:   Tue Mar 24 19:24:01 2020 +0530
+
+    update views.py(ogin)
+
+[33mcommit 92bdc08a4dcead865aea6ff7c6c7461ca2d6b187[m
+Merge: 97ad05d df28859
+Author: unknown <rubycpoovelil7@gmail.com>
+Date:   Tue Mar 24 19:19:17 2020 +0530
+
+    update views.py(login)
+
+[33mcommit 97ad05d4b5cff261741e93e0c6e2c40b7132206e[m
+Author: unknown <rubycpoovelil7@gmail.com>
+Date:   Tue Mar 24 19:10:56 2020 +0530
+
+    company view profile updated
+
+[33mcommit df28859952ac1dee32c7d6f8cadf202337e12fe6[m[33m ([m[1;31mgithub/master[m[33m)[m
+Author: RUBY C POOVELIL <49222541+Ruby1996@users.noreply.github.com>
+Date:   Tue Mar 24 18:54:49 2020 +0530
+
+    add views.py(login)
+
+[33mcommit 7e72e663bffd991f8d890a7c4963d90055f1c67c[m
+Author: RUBY C POOVELIL <49222541+Ruby1996@users.noreply.github.com>
+Date:   Tue Mar 24 18:53:40 2020 +0530
+
+    delete views.py(login)
+
+[33mcommit aa282dbf16f390195ee74971ee1390c4ff914bee[m
+Author: unknown <rubycpoovelil7@gmail.com>
+Date:   Tue Mar 24 15:26:49 2020 +0530
+
+    commit
+
+[33mcommit 125fe3f1a6eb8d593b34cd98659d26d1b2dccfaa[m
+Author: unknown <rubycpoovelil7@gmail.com>
+Date:   Mon Mar 23 10:14:13 2020 +0530
+
+    changes
+
+[33mcommit d69148e7053b63ef6e7b5b94f91c969b6c005a4c[m
+Author: RUBY C POOVELIL <49222541+Ruby1996@users.noreply.github.com>
+Date:   Sun Mar 22 11:46:57 2020 +0530
+
+    Delete wrk_jobportal0.code-workspace
+
+[33mcommit 17279a000ec4043d9f2bf0dbf0660bacec8c7201[m
+Author: RUBY C POOVELIL <49222541+Ruby1996@users.noreply.github.com>
+Date:   Sun Mar 22 11:29:19 2020 +0530
+
+    Add files via upload
+
+[33mcommit 5c54a08c4e1a5da8bb3c9b2cd5a803b57f62ca51[m
+Author: unknown <rubycpoovelil7@gmail.com>
+Date:   Sun Mar 22 10:29:15 2020 +0530
+
+    add all files
